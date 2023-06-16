@@ -26,7 +26,7 @@ function [hFigure, ftle_, ftle_bkwd] = calculate_lcs_layered(data, domain, start
 load(data);
 date_dt = datetime(date(:, 2:7));
 fignum = 1;
-load('WEA_HFR_Data\wea_mboutline_lon_lat.mat')  % this line is specific to the WEA outline overlayed on the resulting graphs
+%load('WEA_HFR_Data\wea_mboutline_lon_lat.mat')  % this line is specific to the WEA outline overlayed on the resulting graphs
 
 
 % set up TIME parameters
@@ -156,31 +156,7 @@ set(hShrinkLineInitialPosition,'marker','o')
 set(hShrinkLineInitialPosition,'MarkerEdgeColor','w')
 set(hShrinkLineInitialPosition,'MarkerFaceColor',repellingColor)
 drawnow
-hold on
-plot(wea_mboutline_lon_lat(:, 1), wea_mboutline_lon_lat(:, 2), 'k')
-drawnow
+%hold on
+%plot(wea_mboutline_lon_lat(:, 1), wea_mboutline_lon_lat(:, 2), 'k')
+%drawnow
 
-
-% %% plot both
-% % LH add - plot both together
-% [hAxes, hFigure(fignum)] = setup_figure(domain, fignum);
-% title(hAxes, strcat('Attracting and Repelling LCSs:', {' '}, titledate))
-% subtitle(strcat(string(duration_T), {' '}, strrep(duration_unit, 's', ''), {' '}, 'integration', {', '}, 'Resolution:', {' '}, string(resolutionX), 'x', string(resolutionY)  ))
-% xlabel(hAxes,'Longitude (\circ)')
-% ylabel(hAxes,'Latitude (\circ)')
-% fignum = fignum + 1;
-% 
-% % Plot forward finite-time Lyapunov exponent
-% cgEigenvalue2 = reshape(cgEigenvalue(:,2),fliplr(resolution));
-% ftle_ = ftle(cgEigenvalue2,diff(timespan));
-% plot_ftle(hAxes,domain,resolution,ftle_);
-% %colormap(hAxes,flipud(gray))
-% colormap(hAxes,flipud(bone))
-% drawnow
-% 
-% % Copy objects from repelling LCS plot
-% hRepellingLcs = copyobj(hRepellingLcs, hAxes);
-% hAttractingLcs = copyobj(hAttractingLcs, hAxes);
-% drawnow
-% hold on
-% line(wea_mboutline_lon_lat(:, 1), wea_mboutline_lon_lat(:, 2), 'color', 'k')

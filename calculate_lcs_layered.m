@@ -26,7 +26,7 @@ function [hFigure, ftle_, ftle_bkwd] = calculate_lcs_layered(data, domain, start
 load(data);
 date_dt = datetime(date(:, 2:7));
 fignum = 1;
-load('WEA_HFR_Data\wea_mboutline_lon_lat.mat')
+load('WEA_HFR_Data\wea_mboutline_lon_lat.mat')  % this line is specific to the WEA outline overlayed on the resulting graphs
 
 
 % set up TIME parameters

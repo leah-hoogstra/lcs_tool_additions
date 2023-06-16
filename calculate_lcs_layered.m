@@ -2,7 +2,7 @@
 % Can call this function to run FTLE and geodesics on the input data in
 % either forward or backward time, with specified parameters
 
-function [hFigure, ftle_, ftle_bkwd] = calculate_lcs_layered(data, domain, start_time, duration_T, duration_unit, resolution_x)
+function [hFigure, ftle_] = calculate_lcs_layered(data, domain, start_time, duration_T, duration_unit, resolution_x)
 
 % calculate fwd or backward FTLE field and repelling or attracting hyperbolic LCSs using Haller's LCS tool
 % data must follow Haller format conventions
@@ -20,7 +20,6 @@ function [hFigure, ftle_, ftle_bkwd] = calculate_lcs_layered(data, domain, start
 % hFigure - figures of the FTLE field and the geodesic LCS
 % optional additional outputs
 % ftle_ - forward ftles calculated
-% ftle_bkwd - backward ftles calculated
 
 
 load(data);
@@ -133,14 +132,6 @@ drawnow
 % plot(wea_mboutline_lon_lat(:, 1), wea_mboutline_lon_lat(:, 2), 'k')
 
 %% Hyperbolic repelling LCSs
-
-% set up figure
-% [hAxes, hFigure(fignum)] = setup_figure(domain, fignum);
-% title(hAxes, strcat('Repelling LCSs:', {' '}, titledate))
-% subtitle(strcat(string(duration_T), {' '}, strrep(duration_unit, 's', ''), {' '}, 'integration', {', '}, 'Resolution:', {' '}, string(resolutionX), 'x', string(resolutionY)  ))
-% xlabel(hAxes,'Longitude (\circ)')
-% ylabel(hAxes,'Latitude (\circ)')
-% fignum = fignum + 1;
 
 % Calculate repelling LCSs
 [shrinkLine,shrinkLineInitialPosition] = seed_curves_from_lambda_max(shrinkLineLocalMaxDistance,shrinkLineMaxLength,cgEigenvalue(:,2),cgEigenvector(:,1:2),domain,resolution,'odeSolverOptions',shrinkLineOdeSolverOptions);
